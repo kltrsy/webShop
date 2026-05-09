@@ -32,7 +32,7 @@ function dispEm(dataStored){
     let dexer = 0;
     dataStored.forEach(element=>{
         let div = document.createElement("div");
-        div.innerHTML = `<img src="${element.image}" alt="${element.title}" class="${"img-thumbnail"}"> <h2>${element.title}</h2> <p>${element.price}</p> <button onclick="toBasket(this)" value="${dexer}"><img src="resources/buy.png" alt="Buy"></button>`;
+        div.innerHTML = `<img src="${element.image}" alt="${element.title}" class="${"img-thumbnail"}"> <h4>${element.title}</h4> <h5>${element.price}€</h5> <button onclick="toBasket(this)" value="${dexer}" class="buyButtoms btn"><img src="resources/buy.png" alt="Buy" ></button>`;
         div.className = "cells"
         biglad.appendChild(div);
         dexer++;
@@ -42,6 +42,7 @@ function dispEm(dataStored){
 //////////////////////////////////////////////////
 //search
 let collectionFiltered = [];
+let szurt = [];
 
 let ertek = document.getElementById("search");
 ertek.addEventListener("input", ()=>{
@@ -52,11 +53,10 @@ ertek.addEventListener("input", ()=>{
     if(collectionFiltered.length>0){
         buffer = collectionFiltered;
     }
-
-    let szurt = buffer.filter(elem => elem.title.toLowerCase().includes(beirt));
+    szurt = buffer.filter(elem => elem.title.toLowerCase().includes(beirt));
     dispEm(szurt);
-    
 });
+
 
 
 
@@ -72,11 +72,22 @@ function duckyou(idk) {
 //////////////////////////////////////////////////
 //////////////////////////////////////////////////
 //checkout stuff
+
+//mega dodo here
 let basket = [];
 function toBasket(merc){
-    if(!basket.includes(dataStored[merc.value])){
-        basket.push(dataStored[merc.value]);
+    if (szurt.length>0 && collectionFiltered.length>0 && (!basket.includes(szurt[merc.value]))) {
+        basket.push(szurt[merc.value]);
+    } else if (szurt.length<1 && collectionFiltered.length>0 && (!basket.includes(collectionFiltered[collectionFiltered.value]))) {
+        basket.push(collectionFiltered[merc.value]);
+    } else if(szurt.length > 0 && collectionFiltered.length<1 && (!basket.includes(szurt[szurt.value]))){
+        basket.push(szurt[merc.value]);
+    }else{
+        if (!basket.includes(dataStored[merc.value])){
+            basket.push(dataStored[merc.value]);
+        }
     }
+
     dispShoppers();
 }
 function removeFromBasket(merc){
@@ -121,7 +132,7 @@ function dbAdder(merc){
 function dispShoppers(){
     let sum = 0;
     basket.forEach(element=>{
-        if(basket.length){
+        if(basket.length>0){
             sum += element.price * dbList[basket.indexOf(element)];
         }
     });
@@ -130,7 +141,7 @@ function dispShoppers(){
     let shopper = document.getElementById("shopperCart");
     let total = document.getElementById("total");
 
-    total.innerHTML = sum;
+    total.innerHTML = (Math.round(sum * 100) / 100)+"€";
     
 
     shopper.innerHTML="";
@@ -140,7 +151,7 @@ function dispShoppers(){
         let dbCounter = dbList[basket.indexOf(element)];
 
         let div = document.createElement("div");
-        div.innerHTML = `<img src="${element.image}" alt="${element.title}" class="${"img-thumbnail"}"> <h2>${element.title}</h2> <h2>${element.price}</h2> <button onclick="removeFromBasket(this)" value="${dexer}">Remove</button> <button onclick="dbAdder(this)" value="${dexer}">Add</button> <p>${dbCounter}</p>`;
+        div.innerHTML = `<img src="${element.image}" alt="${element.title}" class="${"img-thumbnail"}"> <h4>${element.title}</h4> <h5>${element.price}€</h5> <button onclick="removeFromBasket(this)" value="${dexer}">Remove</button> <button onclick="dbAdder(this)" value="${dexer}">Add</button> <p>${dbCounter}</p>`;
         div.className = "cells"
         shopper.appendChild(div);
         dexer++;
@@ -153,14 +164,15 @@ document.getElementById("secret").addEventListener("click", ()=>{
 
 
 if(count>9 && check == false){
-   
+    
     document.getElementById("cam").animate(
         [
-            { transform: 'translate3d(2000%, 500%, 0)',opacity: '1'},
+            
+            { transform: 'translate3d(2000%, 200%, 0)',opacity: '1'},
             { transform: 'translate3d(-2000%, -200%, 0)',opacity: '1'}
           ],
            {
-            duration: 6000
+            duration: 5000
           }
     );
     check = true;
@@ -169,4 +181,3 @@ if(count>9 && check == false){
 }
     
 });
-
