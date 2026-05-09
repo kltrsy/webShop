@@ -85,6 +85,7 @@ function removeFromBasket(merc){
         dbList[merc.value] -=1;
     }else{
         basket.splice(merc.value,1);
+        dbList.splice(merc.value,1);
     }
     dispShoppers();
 
