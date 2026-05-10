@@ -7,6 +7,19 @@
     transition: transform .2s;
     background-color: white;
 }
+.cells2{
+    width: 300px;
+    text-align: center;
+    margin-top: 20%;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px grey;
+    padding: 20px;
+    transition: transform .2s;
+    background-color: white;
+}
+.cells2:hover{
+    transform: scale(1.1);
+}
 .cells:hover{
     transform: scale(1.1);
 }

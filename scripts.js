@@ -38,8 +38,46 @@ function dispEm(dataStored){
         dexer++;
     });
 };
+
+function dispShoppers(){
+    let sum = 0;
+    basket.forEach(element=>{
+        if(basket.length>0){
+            sum += element.price * dbList[basket.indexOf(element)];
+        }
+    });
+
+
+    let shopper = document.getElementById("shopperCart");
+    let total = document.getElementById("total");
+
+    total.innerHTML = (Math.round(sum * 100) / 100)+"€";
+    
+
+    shopper.innerHTML="";
+    let dexer = 0;
+    basket.forEach(element=>{
+
+        let dbCounter = dbList[basket.indexOf(element)];
+
+        let div = document.createElement("div");
+        div.innerHTML = `<img src="${element.image}" alt="${element.title}" class="${"img-thumbnail"}"> <h4>${element.title}</h4> <h5>${element.price}€</h5>
+        <div class="d-flex flex-row buttombuyBg">
+        <div class="p-1"><button onclick="removeFromBasket(this)" class="adderbuts btn" value="${dexer}"><img src="resources/minus.png" alt=""></button></div>
+        <div class="p-1"><h2>${dbCounter}</h2></div>
+        <div class="p-1"><button onclick="dbAdder(this)" class="adderbuts btn" value="${dexer}"><img src="resources/plus.png" alt=""></button></div>
+        </div>`;
+        div.className = "cells2"
+        shopper.appendChild(div);
+        dexer++;
+
+
+    });
+};
 //////////////////////////////////////////////////
 //////////////////////////////////////////////////
+//search
+
 //search
 let collectionFiltered = [];
 let szurt = [];
@@ -69,6 +107,7 @@ function duckyou(idk) {
 
     dispEm(collectionFiltered);
 };
+
 //////////////////////////////////////////////////
 //////////////////////////////////////////////////
 //checkout stuff
@@ -127,44 +166,7 @@ function dbAdder(merc){
 }
 //////////////////////////////////////////////////
 //////////////////////////////////////////////////
-//shopping card writer thingie 
-
-function dispShoppers(){
-    let sum = 0;
-    basket.forEach(element=>{
-        if(basket.length>0){
-            sum += element.price * dbList[basket.indexOf(element)];
-        }
-    });
-
-
-    let shopper = document.getElementById("shopperCart");
-    let total = document.getElementById("total");
-
-    total.innerHTML = (Math.round(sum * 100) / 100)+"€";
-    
-
-    shopper.innerHTML="";
-    let dexer = 0;
-    basket.forEach(element=>{
-
-        let dbCounter = dbList[basket.indexOf(element)];
-
-        let div = document.createElement("div");
-        div.innerHTML = `<img src="${element.image}" alt="${element.title}" class="${"img-thumbnail"}"> <h4>${element.title}</h4> <h5>${element.price}€</h5>
-        <div class="d-flex flex-row buttombuyBg">
-        <div class="p-1"><button onclick="removeFromBasket(this)" class="adderbuts btn" value="${dexer}"><img src="resources/minus.png" alt=""></button></div>
-        <div class="p-1"><h2>${dbCounter}</h2></div>
-        <div class="p-1"><button onclick="dbAdder(this)" class="adderbuts btn" value="${dexer}"><img src="resources/plus.png" alt=""></button></div>
-        </div>`;
-        div.className = "cells"
-        shopper.appendChild(div);
-        dexer++;
-
-
-    });
-};
-
+//secret
 let count = 0;
 let check = false;
 document.getElementById("secret").addEventListener("click", ()=>{
@@ -188,3 +190,5 @@ if(count>9 && check == false){
 }
     
 });
+
+
