@@ -21,24 +21,24 @@
     
     <!--Header n stuff-->
     
-    <header class="p-3 mb-3 border-bottom">
+    <header class="p-3 mb-3 border-bottom" id="head">
        <div class="container">
          <div class="d-flex p-2 flex-wrap align-items-center justify-content-center justify-content-lg-start">
            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0"> 
             <li>
 
               <button id="secret" class="btn" type="button">
-                <img src="resources/pixie.png" alt="Pixie" class="img-fluid" id="pix">
-                <img src="resources/logo.png" alt="Ashie" class="img-fluid">
+                <img src="resources/pixie.png" alt="Pixie" class="img-fluid" id="rotrot">
+                <img src="resources/logo.png" alt="Ashie" class="img-fluid" id="rotrot">
               </button>
 
             </li> 
             <li>
               <div class="dropdown">
-                <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <button class="btn dropdown-toggle categories" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                   <img src="resources/_3lines.png" alt="" class="img-fluid"><img src="resources/categories.png" alt="Categories" class="img-fluid">
                 </button>
-                <ul class="dropdown-menu"  id="downer">
+                <ul class="dropdown-menu"  id="downer" style="width: 100%;">
                   <li><button class="dropdown-item" value="all" onclick="duckyou(this)">All</button></li>
                   <li><button class="dropdown-item" value="men's clothing" onclick="duckyou(this)">Men's clothing</button></li>
                   <li><button class="dropdown-item" value="jewelery" onclick="duckyou(this)">Jewelery</button></li>
@@ -48,60 +48,51 @@
              </div>
           </li> 
             <li>
-              <input type="search" class="form-control" placeholder="Search..." aria-label="Search" id="search">
+              <form class="form-check" role="search">
+                <input type="search" class="form-control" placeholder="Search..." aria-label="Search" id="search">
+             </form>
           </li> 
+          <li>
+            <img src="resources/glass.png" alt="" id="glass">
+          </li>
+          
             <li>
-              <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBackdrop" aria-controls="offcanvasWithBackdrop"><img src="resources/basket.png" alt="basket" onclick="checkOut()"></button>
+              
+              <button id="rotbasket" class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBackdrop" aria-controls="offcanvasWithBackdrop"><img src="resources/basket.png" alt="basket" onclick="checkOut()" ></button>
           </li> 
           </ul> 
+          
 
           <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasWithBackdrop" aria-labelledby="offcanvasWithBackdropLabel">
             <div class="offcanvas-header">
-              <h5 class="offcanvas-title" id="offcanvasWithBackdropLabel">Basket</h5>
-              <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+              <button type="button" class="btn" id="basketupper"  data-bs-dismiss="offcanvas"><img src="resources/basket_check.png" alt=""></h5></button>
             </div>
             <div class="offcanvas-body">
-                <div id="shopperCart">
-                  
+                <div id="shopperCart">                  
                 </div>
-                <p id="total">
-                    
-                </p>
-                <button onclick="checkOuter()" >Check out!</button>
-              
+                <h2 id="total" class="text-center">
+                </h2>
+                <button class="btn" id="basketbuttom" onclick="checkOuter()" ><img src="resources/checkout.png" alt=""></button>
             </div>
          </div>
         </div> 
       </header>
   
-      <img src="resources/sky_camera_v2.png" alt="" id="cam">
-      
-
-    <div id="bigLad">
-
-
-
-    </div>
+    <img src="resources/sky_camera_v2.png" alt="" id="cam">
+    <div id="bigLad"></div>
 
     <!--Footer n stuff-->
-    <div class="container">
-        <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
-             <div class="col-md-4 d-flex align-items-center">
-                 <a href="/" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1" aria-label="Bootstrap">
-                 </a> <span class="mb-3 mb-md-0 text-body-secondary">© 2025 Company, Inc</span>
-                 </div>
-                  <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
-                     <li class="ms-3">
-                        <a class="text-body-secondary" href="#" aria-label="Instagram">
-                        </a>
-                    </li> 
-                    <li class="ms-3">
-                        <a class="text-body-secondary" href="#" aria-label="Facebook">
-                        </a>
-                    </li> 
-                </ul>
-        </footer>
+    <div id="fotter">
+
+      <div class="d-flex flex-row buttombuyBg">
+        <div class="p-1">
+          <p>© 2026 Ashie</p>
+        </div>
+        <div class="p-1">
+          <img src="resources/me.png" alt="">
+        </div>
     </div>
+  </div>
 </body>
 
 </html>

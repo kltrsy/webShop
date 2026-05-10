@@ -32,7 +32,7 @@ function dispEm(dataStored){
     let dexer = 0;
     dataStored.forEach(element=>{
         let div = document.createElement("div");
-        div.innerHTML = `<img src="${element.image}" alt="${element.title}" class="${"img-thumbnail"}"> <h4>${element.title}</h4> <h5>${element.price}€</h5> <button onclick="toBasket(this)" value="${dexer}" class="buyButtoms btn"><img src="resources/buy.png" alt="Buy" ></button>`;
+        div.innerHTML = `<img src="${element.image}" alt="${element.title}" class="${"img-thumbnail"}"> <h4>${element.title}</h4> <h5 class="text-secondary">${element.price}€</h5> <button onclick="toBasket(this)" value="${dexer}" class="buyButtoms btn"><img src="resources/buy.png" alt="Buy" ></button>`;
         div.className = "cells"
         biglad.appendChild(div);
         dexer++;
@@ -73,14 +73,14 @@ function duckyou(idk) {
 //////////////////////////////////////////////////
 //checkout stuff
 
-//mega dodo here
+//mega dodo here, shite will break
 let basket = [];
 function toBasket(merc){
     if (szurt.length>0 && collectionFiltered.length>0 && (!basket.includes(szurt[merc.value]))) {
         basket.push(szurt[merc.value]);
-    } else if (szurt.length<1 && collectionFiltered.length>0 && (!basket.includes(collectionFiltered[collectionFiltered.value]))) {
+    } else if (szurt.length<1 && collectionFiltered.length>0 && (!basket.includes(collectionFiltered[merc.value]))) {
         basket.push(collectionFiltered[merc.value]);
-    } else if(szurt.length > 0 && collectionFiltered.length<1 && (!basket.includes(szurt[szurt.value]))){
+    } else if(szurt.length > 0 && collectionFiltered.length<1 && (!basket.includes(szurt[merc.value]))){
         basket.push(szurt[merc.value]);
     }else{
         if (!basket.includes(dataStored[merc.value])){
@@ -151,10 +151,17 @@ function dispShoppers(){
         let dbCounter = dbList[basket.indexOf(element)];
 
         let div = document.createElement("div");
-        div.innerHTML = `<img src="${element.image}" alt="${element.title}" class="${"img-thumbnail"}"> <h4>${element.title}</h4> <h5>${element.price}€</h5> <button onclick="removeFromBasket(this)" value="${dexer}">Remove</button> <button onclick="dbAdder(this)" value="${dexer}">Add</button> <p>${dbCounter}</p>`;
+        div.innerHTML = `<img src="${element.image}" alt="${element.title}" class="${"img-thumbnail"}"> <h4>${element.title}</h4> <h5>${element.price}€</h5>
+        <div class="d-flex flex-row buttombuyBg">
+        <div class="p-1"><button onclick="removeFromBasket(this)" class="adderbuts btn" value="${dexer}"><img src="resources/minus.png" alt=""></button></div>
+        <div class="p-1"><h2>${dbCounter}</h2></div>
+        <div class="p-1"><button onclick="dbAdder(this)" class="adderbuts btn" value="${dexer}"><img src="resources/plus.png" alt=""></button></div>
+        </div>`;
         div.className = "cells"
         shopper.appendChild(div);
         dexer++;
+
+
     });
 };
 
