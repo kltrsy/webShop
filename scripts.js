@@ -24,6 +24,7 @@ fetchem();
 //////////////////////////////////////////////////
 //////////////////////////////////////////////////
 //display stuff
+let buffed = dataStored;
 function dispEm(dataStored){
 
     let biglad = document.getElementById("bigLad");
@@ -37,6 +38,7 @@ function dispEm(dataStored){
         biglad.appendChild(div);
         dexer++;
     });
+    buffed = dataStored;
 };
 
 function dispShoppers(){
@@ -81,7 +83,7 @@ function dispShoppers(){
 //search
 let collectionFiltered = [];
 let szurt = [];
-
+//mega dodo here, shite will break
 let ertek = document.getElementById("search");
 ertek.addEventListener("input", ()=>{
     let beirt = ertek.value.toLowerCase();
@@ -112,9 +114,14 @@ function duckyou(idk) {
 //////////////////////////////////////////////////
 //checkout stuff
 
-//mega dodo here, shite will break
+
 let basket = [];
 function toBasket(merc){
+    if (!basket.includes(buffed[merc.value])){
+        basket.push(buffed[merc.value]);
+    }
+    /*
+    
     if (szurt.length>0 && collectionFiltered.length>0 && (!basket.includes(szurt[merc.value]))) {
         basket.push(szurt[merc.value]);
     } else if (szurt.length<1 && collectionFiltered.length>0 && (!basket.includes(collectionFiltered[merc.value]))) {
@@ -126,6 +133,7 @@ function toBasket(merc){
             basket.push(dataStored[merc.value]);
         }
     }
+    */
 
     dispShoppers();
 }
